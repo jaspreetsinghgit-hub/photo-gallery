@@ -5,13 +5,16 @@ import PhotoCard from "./PhotoCard.jsx";
 
 const STORAGE_KEY = "photo-gallery-favourites";
 
+// Loading initial favourites
 function loadInitialFavourites() {
   try {
+    // Retrieving favourites from localStorage 
     const savedFavourites = localStorage.getItem(STORAGE_KEY);
     if (savedFavourites === null) return [];
 
     const parsedFavourites = JSON.parse(savedFavourites);
 
+    // Validating that the parsed data is an array of strings
     if (
       Array.isArray(parsedFavourites) &&
       parsedFavourites.every((id) => typeof id === "string")
@@ -30,12 +33,14 @@ function Gallery() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Using useReducer to manage favourites state
   const [favourites, dispatch] = useReducer(
     favouritesReducer,
     undefined,
     loadInitialFavourites,
   );
 
+  // Saving favourites to localStorage
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(favourites));
@@ -44,10 +49,12 @@ function Gallery() {
     }
   }, [favourites]);
 
+  // Using useCallback to memoize the search handler function
   const handleSearch = useCallback((event) => {
     setSearchTerm(event.target.value);
   }, []);
 
+  // Using useMemo to filter photos based on the search term
   const filteredPhotos = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
 

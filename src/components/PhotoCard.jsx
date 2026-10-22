@@ -4,8 +4,8 @@ function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
       <img
         src={`https://picsum.photos/id/${photo.id}/600/400`}
         alt={`Photo by ${photo.author}`}
-        loading="lazy"
-        decoding="async"
+        loading="lazy" 
+        decoding="async" // as there is multiple images, decoding asynchronously will improve performance
         className="h-56 w-full object-cover"
       />
 
@@ -15,6 +15,7 @@ function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
         <button
           type="button"
           onClick={onToggleFavourite}
+          // aria-label and aria-pressed attributes are used for accessibility to indicate the button's purpose and state to screen readers
           aria-label={
             isFavourite
               ? `Remove ${photo.author}'s photo from favourites`
