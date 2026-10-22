@@ -1,16 +1,94 @@
-# React + Vite
+# Photo Gallery App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A responsive photo gallery built with **React, Vite, and Tailwind CSS** as part of the Celebrare Frontend React Internship pre-screening assignment.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Fetches 30 photos from the Picsum Photos API.
+- Displays photos in a responsive grid.
+- Shows loading and error states while fetching data.
+- Filters photos by author name in real time.
+- Allows users to add and remove favourites.
+- Persists favourites across page refreshes using `localStorage`.
+- Uses a custom `useFetchPhotos` hook to separate data-fetching logic from UI components.
+- Uses `useReducer` to manage favourite state and `useCallback` and `useMemo` for the required search implementation.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- Tailwind CSS
+- JavaScript
+- Picsum Photos API
+- React Hooks: `useState`, `useEffect`, `useReducer`, `useCallback`, and `useMemo`
+- Browser `localStorage`
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/jaspreetsinghgit-hub/photo-gallery.git
+```
+
+Navigate into the project directory:
+
+```bash
+cd photo-gallery
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal.
+
+## API
+
+This project uses the [Picsum Photos API](https://picsum.photos/v2/list?limit=30) to retrieve photo data.
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── Gallery.jsx
+│   └── PhotoCard.jsx
+├── hooks/
+│   └── useFetchPhotos.js
+├── reducers/
+│   └── favouritesReducer.js
+├── App.jsx
+├── index.css
+└── main.jsx
+```
+
+## Available Scripts
+
+- `npm run dev` — Start the development server.
+- `npm run build` — Build the application for production.
+- `npm run lint` — Check the code with Oxlint.
+- `npm run preview` — Preview the production build locally.
+
+## Assignment
+
+Developed as part of the Celebrare Frontend React Internship pre-screening assignment.
+
+## Author
+
+Jaspreet Singh
